@@ -3,21 +3,9 @@
  * Copyright 2023 The Modulesx1 Authors
  * Licensed under MIT ( https://github.com/ModulesX1/Cyberhash/blob/main/LICENSE )
  */
-const crypto = require('crypto');
-/*	
- * @param { String } initalValue Text to encode.
- * @param { String } secretKey Secret key ( Optional )
- * @return { String }
- */
-function cyberhash( initalValue, secretKey ) {
-    const inital = secretKey ? crypto.createHmac( 'sha3-256', secretKey ) : crypto.createHash('sha3-256');
-    inital.update( Buffer.from( initalValue, 'utf-8' ) );
-    return inital.digest('hex');
-}
-module.exports = cyberhash;
-/*
 (function(){
   var crypt = require('crypt'),
+      crypto = require('crypto'),
       utf8 = require('charenc').utf8,
       isBuffer = require('is-buffer'),
       bin = require('charenc').bin,
@@ -165,7 +153,7 @@ module.exports = cyberhash;
   md5._blocksize = 16;
   md5._digestsize = 16;
 
-  module.exports = function (message, options) {
+  function HashHex(message, options) {
     if (message === undefined || message === null)
       throw new Error('Illegal argument ' + message);
 
@@ -174,6 +162,16 @@ module.exports = cyberhash;
         options && options.asString ? bin.bytesToString(digestbytes) :
         crypt.bytesToHex(digestbytes);
   };
+  
+  /*	
+   * @param { String } initalValue Text to encode.
+   * @param { String } secretKey Secret key ( Optional )
+   * @return { String }
+   */
+  module.exports = function cyberhash( initalValue, secretKey ) {
+    const inital = secretKey ? crypto.createHmac( 'sha3-256', secretKey ) : crypto.createHash('sha3-256');
+    inital.update( Buffer.from( initalValue, 'utf-8' ) );
+    return HashHex( inital.digest('hex') );
+  };
 
 })();
-*/
