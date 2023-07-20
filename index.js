@@ -169,6 +169,8 @@
    * @return { String }
    */
   module.exports = function cyberhash( initalValue, secretKey ) {
+    if ( initalValue === undefined || initalValue === null || typeof initalValue === "boolean" )
+      throw new Error('Illegal argument ' + message);
     const inital = secretKey ? crypto.createHmac( 'sha3-256', secretKey ) : crypto.createHash('sha3-256');
     inital.update( Buffer.from( HashHex( initalValue ), 'utf-8' ) );
     return inital.digest('hex');
