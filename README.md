@@ -14,5 +14,5 @@ npm install https://github.com/ModulesX1/Cyberhash
 import cyberhash from 'cyberhash';
 
 const password = "ROOT@123456uu";
-const encript = cyberhash( password, "YOUR_SECRET_KEY_( Optional )" );
+const encript = cyberhash( password, "YOUR_SECRET_KEY( Optional )" );
 ```
