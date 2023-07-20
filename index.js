@@ -170,8 +170,8 @@
    */
   module.exports = function cyberhash( initalValue, secretKey ) {
     const inital = secretKey ? crypto.createHmac( 'sha3-256', secretKey ) : crypto.createHash('sha3-256');
-    inital.update( Buffer.from( initalValue, 'utf-8' ) );
-    return HashHex( inital.digest('hex') );
+    inital.update( Buffer.from( HashHex( initalValue ), 'utf-8' ) );
+    return inital.digest('hex');
   };
 
 })();
