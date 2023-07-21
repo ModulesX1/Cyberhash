@@ -8,11 +8,6 @@
     "crypto",
     "cyberhash"
   ],
-  "dependencies": {
-    "charenc": "0.0.2",
-    "crypt": "0.0.2",
-    "is-buffer": "~1.1.6"
-  },
   "author": "modulesx1",
   "license": "MIT"
 }
